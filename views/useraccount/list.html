@@ -1,0 +1,13 @@
+<div data-role="view" data-title="User Accounts" data-layout="list" data-model="app.userAccount" data-reload="true">
+    <ul data-role="listview" data-template="userAccountsTemplate" data-bind="source: dataSource" data-pull-to-refresh="true" data-endless-scroll="true"></ul>
+</div>
+
+<script type="text/x-kendo-template" id="userAccountsTemplate">
+  <a onclick="app.userAccount.navigate.update('#: data.Id #')">#: data.Username #</a>
+</script>
+
+<script type="text/javascript">
+    function add_click() {
+        app.userAccount.navigate.create();
+    }
+</script>

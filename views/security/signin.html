@@ -1,0 +1,23 @@
+<div data-role="view" data-title="Application Name" data-layout="signin" data-model="app.security" data-before-hide="app.security.beforeHide" data-use-native-scrolling="true">
+    <div class="signin-wrapper">
+        <div class="block">
+            Company Logo
+        </div>
+        <ul data-role="listview" data-style="inset">
+            <li>
+                <label>
+                    Username
+                    <input type='text' name='user' id="user" data-bind="value: user" />
+                </label>
+            </li>
+            <li>
+                <label> Password
+                    <input type='password' name='password' id="password" data-bind="value: password" />
+                </label>
+            </li>
+        </ul>
+        <div class="block">
+                <a class="wide-button" data-role="button" data-click="app.security.signin">Sign In</a>
+        </div>
+    </div>
+</div>

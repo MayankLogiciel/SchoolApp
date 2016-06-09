@@ -1,0 +1,41 @@
+<div data-role="view" data-title="User Account" data-layout="edit" data-reload="true" data-model="app.userAccount.model" data-use-native-scrolling="true">
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label>
+                Username
+                <span data-bind="text: Username"></span>
+            </label>
+        </li>
+        <li>
+            <label>
+                First Name
+                <input type="text" data-bind="value: FirstName" />
+            </label>
+        </li>
+        <li>
+            <label>
+                Last Name
+                <input type="text" data-bind="value: LastName" />
+            </label>
+        </li>
+        <li>
+            <label>
+                Is User Account Locked
+                <input data-role="switch" data-bind="checked: IsUserAccountLocked" />
+            </label>
+        </li>
+    </ul>
+    <div class="block">
+        <a data-role="button" class="wide-button" onclick="app.userAccount_Role.navigate.list()">Roles</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function save_click() {
+        app.userAccount.update();
+    }
+    
+    function delete_click() {
+        $.lss.ajax.confirmDelete(app.userAccount.destroy);
+    }
+</script>

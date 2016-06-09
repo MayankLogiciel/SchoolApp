@@ -1,0 +1,34 @@
+<div data-role="view" data-title="Profile" data-layout="profile" data-model="app.profile.model" data-use-native-scrolling="true">
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label>
+                Username
+                <span data-bind="text: Username"></span>
+            </label>
+        </li>
+        <li>
+            <label>
+                First Name
+                <input type="text" data-bind="value: FirstName" />
+            </label>
+        </li>
+        <li>
+            <label>
+                Last Name
+                <input type="text" data-bind="value: LastName" />
+            </label>
+        </li>
+        <li>
+            <label>
+                Password
+                <input type="text" data-bind="value: Password" />
+            </label>
+        </li>
+        <li>
+            <label>
+                Confirm Password
+                <input type="text" data-bind="value: ConfirmPassword" />
+            </label>
+        </li>
+    </ul>
+</div>

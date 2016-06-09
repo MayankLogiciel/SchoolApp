@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link href="styles/kendo/kendo.mobile.all.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+
+    <script src="cordova.js"></script>
+    <script src="scripts/jquery/jquery.min.js"></script>
+    <script src="scripts/kendo/kendo.mobile.min.js"></script>
+    <script src="scripts/lss/lss.ajax.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+
+<body id="kendoUiMobileApp">
+    <script src="views/security/security.js"></script>
+    <script src="views/home/home.js"></script>
+    <script src="views/profile/profile.js"></script>
+    <script src="views/useraccount/useraccount.js"></script>
+    <script src="views/useraccount_role/useraccount_role.js"></script>
+
+    <div data-role="layout" data-id="main">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+
+        <footer data-role="footer">
+            <div data-role="tabstrip" id="navigation-container">
+                <a href="views/home/index.html"  data-icon="home">Home View</a>
+                <a href="views/useraccount/list.html"  data-icon="globe">Users</a>
+                <a onclick="app.profile.navigate.update();" data-icon="user">Profile</a>
+                <a id="more" onclick="moreMenus()" data-icon="more">more</a>
+            </div>
+        </footer>
+        
+        <div id="more-popover" data-role="popover" data-popup="{ width:'90%', direction: 'down' }">
+            <div data-role="view">
+                <a data-role="button" onclick="moreNavigate('views/useraccount/list.html');" class="wide-button" data-icon="user">User Accounts</a>
+                <a data-role="button" onclick="moreNavigate('views/useraccount/list.html');" class="wide-button" data-icon="user">Users</a>
+                <a data-role="button" onclick="app.profile.edit();" class="wide-button" data-icon="user">Profile</a>
+            </div>
+        </div>
+    </div>
+    
+    <div data-role="layout" data-id="list">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-icon="back" data-align="left" onclick="app.back();"></a>
+                <span data-role="view-title"></span>
+                <a data-role="button" data-icon="add" data-align="right" onclick="add_click();"></a>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+    </div>
+    
+    <div data-role="layout" data-id="add">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-icon="back" data-align="left" onclick="app.back();"></a>
+                <span data-role="view-title"></span>
+                <a data-role="button" data-icon="save" data-align="right" onclick="save_click();"></a>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+    </div>
+    
+    <div data-role="layout" data-id="edit">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-icon="back" data-align="left" onclick="app.back();"></a>
+                <span data-role="view-title"></span>
+                <a data-role="button" data-icon="save" data-align="right" onclick="save_click();"></a>
+                <a data-role="button" data-icon="delete" data-align="right" onclick="delete_click();"></a>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+        
+        <ul data-role="actionsheet" popup="{ direction: top }" id="confirmDelete">
+            <li><a href="#">Delete</a></li>
+        </ul>
+    </div>
+    
+    <div data-role="layout" data-id="profile">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-icon="back" data-align="left" onclick="app.back();"></a>
+                <span data-role="view-title"></span>
+                <a data-role="button" data-icon="save" data-align="right" onclick="app.profile.update();"></a>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+    </div>
+    
+    <div data-role="layout" data-id="signin">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </header>
+
+        <!-- application views will be rendered here -->
+    </div>
+    
+    <div data-role="modalview" id="errors" style="display: none; width: 90%; height: 90%">
+        <div class="block">
+            <span data-role="view-title">Please correct the following errors:</span>
+        </div>
+        <ul data-role="listview" data-style="inset"></ul>
+        <div class="block">
+            <a data-role="button" class="wide-button" onclick="closeModal(this)">Close</a>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        function closeModal(sender) {
+            $(sender).closest('.km-modalview').data('kendoMobileModalView').close();
+        }
+        
+        function moreMenus() {
+            $("#more-popover").data("kendoMobilePopOver").open("#more");
+        }
+        
+        function moreNavigate(url) {
+            $("#more-popover").data("kendoMobilePopOver").close();
+            app.mobileApp.navigate(url);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<div data-role="view" data-title="User Account Role" data-layout="edit" data-reload="true" data-model="app.userAccount_Role.model" data-use-native-scrolling="true">
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label>
+                Role
+                Role
+                <select name="RoleId"
+                        data-bind="source: roles, value: model.RoleId"
+                        data-text-field="Text"
+                        data-value-field="Value">
+                </select>
+            </label>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    function save_click() {
+        app.userAccount_Role.update();
+    }
+    
+    function delete_click() {
+        $.lss.ajax.confirmDelete(app.userAccount_Role.destroy);
+    }
+</script>
